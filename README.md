@@ -8,7 +8,7 @@
 - Express
 - Firebase / Firestore
 
-* Frontend *
+ { Frontend }
 - ReactJs
 - Bulma.css
 
