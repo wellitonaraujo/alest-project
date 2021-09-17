@@ -3,7 +3,7 @@
 <br>
 
 ## Tecnologias utilizadas:
-* Backend *
+{ Backend }
 - Nodejs
 - Express
 - Firebase / Firestore
