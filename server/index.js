@@ -1,48 +1,50 @@
 const express = require("express");
 const cors = require("cors");
-app.use(express.json());
-app.use(cors());
 
 const Product = require("./config");
 
 const app = express();
 
-// Todos os produtos um produto
+app.use(express.json());
+app.use(cors());
+
+// Retorne todos os produtos um produto
 app.get("/products", async (req, res) => {
 
   const allProducts = await Product.get();
 
   const list = allProducts.doc.map((doc) => ({ id: doc.id, ...doc.data() }));
-  res.send(allProducts.json());
+  return res.json(list);
   
 });
 
 // Criar um produto
-app.post("/create", async (req, res) => {
-  const data = req.body;
+app.post("/products", async (req, res) => {
+  const { name } = req.body;
 
-  await Product.add({ data });
+  await Product.add({ name });
 
-  res.send({ msg: "Produto adicionada com sucesso" });
+  res.json(list)
 });
 
 // Editar um produto
-app.put("/:id", async (req, res) => {
-  const id = req.body.id;
-  const data = req.body;
+app.put("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
 
-  await Product.doc(id).update(data);
+  const product = await Product.doc(id).update(name);
 
-  res.send({ msg: "Produto editado com sucesso" });
+  res.json(product)
 });
 
 // Deletar um produto
-app.delete("/:id", async (req, res) => {
-  const id = req.body.id;
+app.delete("/product/:id", async (req, res) => {
+  const { id } = req.params;
 
-  await Product.doc(id).delete();
+  const product = await Product.doc(id).delete(name);
+  
+  res.json(product)
 
-  res.send({ msg: "Produto deletado com sucesso" });
 });
 
 app.listen(3333);
