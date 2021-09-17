@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Retorne todos os produtos um produto
+// Retorne todos os produtos
 app.get("/products", async (req, res) => {
 
   const allProducts = await Product.get();
