@@ -31,7 +31,7 @@ $ yarn
 Você vai precisar do Firebase instalado na sua máquina.
 
 ```bash
-# Para iniciar o fronted
+# Para iniciar o Frontend
 $ npm start
 
 ```
